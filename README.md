@@ -27,6 +27,8 @@ The PCB requires only five components. The transmitter can be controlled with si
 
 Only a few commands are required to use the Minimal APRS TX module. First the radio is configured with the command `$CfgRadio` and then APRS packets can be sent with the commands `$TXPosPkt` or `$TXStatPkt`.
 
+For communication `9600 Baud` serial with 8 data bits, no parity, one stop bit is used. So it should communicate out of the box with any Arduino.
+
 ### `$STAT` *(Get status)*
 
 ```
@@ -41,7 +43,7 @@ Return:
 
 ```
 Format:
-$CfgRadio <APRS_Freq>,<APRS_Freq_Err>,<TX_PWR>,<AFSK_TONE>,<FREQ_DEV>,<Src_Call>,<Src_ID>,<Digi_Call>,<Digi_SSID>;
+$CfgRadio <APRS_Freq>,<APRS_Freq_Err>,<TX_PWR>,<Afsk_Tone>,<Freq_Dev>,<Src_Call>,<Src_ID>,<Digi_Call>,<Digi_SSID>;
 
 Example:
 $CfgRadio 144800000,0,17,205,2700,DL9AS,11,WIDE1,1;
@@ -50,8 +52,8 @@ $CfgRadio 144800000,0,17,205,2700,DL9AS,11,WIDE1,1;
 - `<APRS_Freq>` - APRS frequency in Hz (e.g. `144800000`)
 - `<APRS_Freq_Err>` - APRS frequency error/offset in Hz (e.g. `0`)
 - `<TX_PWR>` - Transmission power from 2dbm to 20dbm (e.g. `17`)
-- `<AFSK_TONE>` - AFSK tone adjustment (e.g. `205`)
-- `<FREQ_DEV>` - FSK deviation in Hz (e.g. `2700`)
+- `<Afsk_Tone>` - AFSK tone adjustment (e.g. `205`)
+- `<Freq_Dev>` - FSK deviation in Hz (e.g. `2700`)
 - `<Src_Call>` - APRS source callsign (e.g. `DL9AS`)
 - `<Src_ID>` - APRS source SSID (e.g. `11`)
 - `<Digi_Call>` - APRS digipeater path callsign (e.g. `WIDE1`)
@@ -67,7 +69,7 @@ Example:
 $TxPosPkt 525121,133273,42,O,/,"73 from DL9AS";
 
 Resulting APRS packet:
-DL9AS-11>AMON,WIDE1-1:!5230.72N/01319.63EO/A=000137/N0T26 73 from DL9AS
+DL9AS-11>AMON,WIDE1-1:!5230.72N/01319.63EO/A=000137/N0T26V31 73 from DL9AS
 ```
 
 - `<Lat>` - GPS Latitude in deg * 10000 (e.g. `525121`)
@@ -76,6 +78,8 @@ DL9AS-11>AMON,WIDE1-1:!5230.72N/01319.63EO/A=000137/N0T26 73 from DL9AS
 - `<Symbol>` - APRS symbol (e.g. `O` for balloon)
 - `<Symbol_Overlay>` - APRS symbol overlay (e.g. `/` for balloon)
 - `<Comment>` - APRS comment with 50 character max (e.g. `"73 from DL9AS"`)
+
+Note: `(N<Pkt_count>T<Temperature>V<VCC*10>)` is automatically added to the final packet.
 
 ### `$TxStatPkt` *(Transmit APRS status packet)*
 
@@ -87,16 +91,17 @@ Example:
 $TxStatPkt "73 from DL9AS";
 
 Resulting APRS packet:
-DL9AS-1>AMON,WIDE1-1:>N0T0|DL9AS MinAPRSTX| 73 from DL9AS
+DL9AS-1>AMON,WIDE1-1:>N0T0V31 73 from DL9AS
 ```
 
 - `<Comment>` - APRS comment with 80 character max (e.g. `"73 from DL9AS"`)
 
+Note: `(N<Pkt_count>T<Temperature>V<VCC*10>)` is automatically added to the final packet.
 
 ## PCB Assembly
 | | |
 | :---------------------------- | :-------------------------------- |
-| In a first step, with the help of the finished Gerber files (see here!!!), the custom PCBs are ordered from a PCB manufacturer. I would also recommend to order a stencil, that makes the soldering easier. | ![](Documentation/Minimal-APRS-TX-size-USD.png)|
+| In a first step, with the help of the [gerber files](Hardware/Gerber-Files/), the custom PCBs are ordered from a PCB manufacturer. I would also recommend to order a stencil, that makes the soldering easier. | ![](Documentation/Minimal-APRS-TX-size-USD.png)|
 
 The needed components can now be ordered:
 
