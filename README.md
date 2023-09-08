@@ -7,9 +7,10 @@ The goal of this project is to provide one of the simplest APRS transmitters. It
 The PCB requires only five components. The transmitter can be controlled with simple serial commands.
 
 | ![](Documentation/Minimal-APRS-TX-front.png) | ![](Documentation/Minimal-APRS-TX-back.png) |
-| :---------------------------- | :-------------------------------- |
+|:-------------------------------------------- |:------------------------------------------- |
 
 ## Table of contents
+
 - [Minimal APRS TX by DL9AS](#minimal-aprs-tx-by-dl9as)
   - [Table of contents](#table-of-contents)
   - [Usage](#usage)
@@ -99,9 +100,10 @@ DL9AS-1>AMON,WIDE1-1:>N0T0V31 73 from DL9AS
 Note: `(N<Pkt_count>T<Temperature>V<VCC*10>)` is automatically added to the final packet.
 
 ## PCB Assembly
-| | |
-| :---------------------------- | :-------------------------------- |
-| In a first step, with the help of the [gerber files](Hardware/Gerber-Files/), the custom PCBs are ordered from a PCB manufacturer. I would also recommend to order a stencil, that makes the soldering easier. | ![](Documentation/Minimal-APRS-TX-size-USD.png)|
+
+|                                                                                                                                                                                                                |                                                 |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:----------------------------------------------- |
+| In a first step, with the help of the [gerber files](Hardware/Gerber-Files/), the custom PCBs are ordered from a PCB manufacturer. I would also recommend to order a stencil, that makes the soldering easier. | ![](Documentation/Minimal-APRS-TX-size-USD.png) |
 
 The needed components can now be ordered:
 
@@ -113,7 +115,7 @@ The needed components can now be ordered:
 | C1         | 100nF (0603 package)            | 1        | 0.01$           |
 | L1         | 200nH (0603 package)            | 1        | 0.01$           |
 
-With the PCBs and the components, the transmitter can now be assembled. I would recommend reflow soldering with stencil. It is important that the correct orientation of the ICs is ensured. This [interactive BOM](Hardware/InteractiveBOM.html) can help with placing the components.
+With the PCBs and the components, the transmitter can now be assembled. I would recommend reflow soldering with stencil. It is important that the correct orientation of the ICs is ensured. This [interactive BOM](https://htmlpreview.github.io/?https://github.com/DL9AS/Minimal-APRS-TX/blob/main/Hardware/InteractiveBOM.html) can help with placing the components.
 
 ## Programming
 
@@ -127,7 +129,8 @@ Before the Minimal APRS TX module can be used, the ATTiny1604 microcontroller ha
 ```
 pymcuprog write -d attiny1604 -t uart --erase --verify -u <PORT> -f <FIRMWARE>
 ```
+
 - `<PORT>` - Serial Port (e.g. `COM5` or `ttyACM0`)
-- `<FIRMWARE>` - Firmware file (e.g. `MinimalAPRSTX.hex`)
+- `<FIRMWARE>` - Firmware file (e.g. `Minimal-APRS-TX_V1.0.hex`)
 
 ![](Documentation/Minimal-APRS-TX-Programming.png )
