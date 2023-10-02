@@ -1,6 +1,6 @@
 # Minimal APRS TX by DL9AS
 
-**Note: This project is still in active development. There is no guarantee for functionality at this time!**
+**Note: This project is still in active development. There is no guarantee for full functionality at this time!**
 
 The goal of this project is to provide one of the simplest APRS transmitters. It is especially designed for people who are starting high altitude ballooning. If you are interested in more advanced APRS radiosondes with camera, please have a look at this repository: https://github.com/DL9AS/jufo-project-radiosonde
 
@@ -101,9 +101,13 @@ Note: `(N<Pkt_count>T<Temperature>V<VCC*10>)` is automatically added to the fina
 
 ## PCB Assembly
 
-|                                                                                                                                                                                                                |                                                 |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:----------------------------------------------- |
-| In a first step, with the help of the [gerber files](Hardware/Gerber-Files/), the custom PCBs are ordered from a PCB manufacturer. I would also recommend to order a stencil, that makes the soldering easier. | ![](Documentation/Minimal-APRS-TX-size-USD.png) |
+<table>
+  <tr>
+    <td>In a first step, with the help of the <a href="Hardware/Gerber-Files/">gerber files</a>
+, the custom PCBs are ordered from a PCB manufacturer. I would also recommend to order a stencil, that makes the soldering easier.</td>
+    <td><img src="Documentation/Minimal-APRS-TX-size-USD.png" width=60%></td>
+  </tr>
+</table>
 
 The needed components can now be ordered:
 
@@ -112,8 +116,8 @@ The needed components can now be ordered:
 | U1         | ATTiny1604                      | 1        | 0.81$           |
 | U2         | SX1278IMLTRT                    | 1        | 2.65$           |
 | X1         | 32MHz Crystal (SMD3225 package) | 1        | 0.15$           |
-| C1         | 100nF (0603 package)            | 1        | 0.01$           |
-| L1         | 200nH (0603 package)            | 1        | 0.01$           |
+| C1         | 100nF (0402 package)            | 1        | 0.01$           |
+| L1         | 200nH (0402 package)            | 1        | 0.01$           |
 
 With the PCBs and the components, the transmitter can now be assembled. I would recommend reflow soldering with stencil. It is important that the correct orientation of the ICs is ensured. This [interactive BOM](https://htmlpreview.github.io/?https://github.com/DL9AS/Minimal-APRS-TX/blob/main/Hardware/InteractiveBOM.html) can help with placing the components.
 
